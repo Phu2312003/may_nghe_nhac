@@ -1,0 +1,25 @@
+{
+  "name": "Nghe Nhạc Ngoại Tuyến",
+  "short_name": "Nghe Nhạc",
+  "description": "Trình phát nhạc có thể cài đặt và hoạt động ngoại tuyến.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8efe8",
+  "theme_color": "#d94f2b",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

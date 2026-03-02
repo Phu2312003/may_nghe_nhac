@@ -3,61 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music player</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Nghe Nhạc | Trình phát ngoại tuyến</title>
+  <meta name="description" content="Trình phát nhạc ngoại tuyến có thể cài đặt dưới dạng PWA.">
+  <meta name="theme-color" content="#d94f2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="player">
-    <!-- Dashboard -->
-    <div class="dashboard">
-      <!-- Header -->
-      <header>
-        <h4>Now playing:</h4>
-        <h2>Đang phát...</h2>
-      </header>
+  <main class="app-shell">
+    <section class="hero-panel" aria-label="Giới thiệu ứng dụng">
+      <div class="hero-copy">
+        <p class="eyebrow">Không gian nghe nhạc ngoại tuyến</p>
+        <h1>Nghe Nhạc</h1>
+        <p class="hero-lead">
+          Giao diện mới gọn hơn, rõ hơn, hỗ trợ cài đặt PWA và nghe nhạc ngay cả khi mất mạng.
+        </p>
+      </div>
+      <div class="hero-badges" aria-label="Tính năng ứng dụng">
+        <span class="hero-badge">Sẵn sàng cài đặt</span>
+        <span class="hero-badge">Phím tắt tiện dụng</span>
+        <span class="hero-badge">Bộ nhớ đệm ngoại tuyến</span>
+      </div>
+    </section>
 
-      <!-- CD -->
-      <div class="cd">
-        <div class="cd-thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
+    <section class="player-shell player" aria-label="Trình phát nhạc">
+      <div class="dashboard">
+        <header class="player-header">
+          <div class="header-copy">
+            <p class="section-kicker">Đang phát</p>
+            <h2>Đang phát...</h2>
+            <p class="artist-name">Chưa chọn bài hát</p>
+          </div>
+          <div class="header-meta" aria-label="Thông tin phát hiện tại">
+            <span class="queue-current">01 / 06</span>
+            <span class="mode-indicator">Chế độ thường</span>
+          </div>
+        </header>
+
+        <p class="app-status" data-state="pending" role="status" aria-live="polite">
+          Đang chuẩn bị bộ nhớ đệm ngoại tuyến...
+        </p>
+
+        <div class="player-stage">
+          <div class="cover-card">
+            <div class="cover-glow" aria-hidden="true"></div>
+            <div class="cd">
+              <div class="cd-thumb" style="background-image: url('./assets/images/kothuocvenhau.jpg')"></div>
+            </div>
+          </div>
+
+          <div class="player-tips" aria-label="Mẹo sử dụng">
+            <div class="tip-card">
+              <span class="tip-label">Phím tắt</span>
+              <strong>Space / Left / Right</strong>
+              <p>Phát, tạm dừng hoặc chuyển bài nhanh mà không cần chạm chuột.</p>
+            </div>
+            <div class="tip-card">
+              <span class="tip-label">Ngoại tuyến</span>
+              <strong>Sẵn sàng nghe lại</strong>
+              <p>Ứng dụng sẽ lưu sẵn tài nguyên chính sau lần truy cập đầu tiên.</p>
+            </div>
+          </div>
         </div>
+
+        <div class="control" aria-label="Điều khiển phát nhạc">
+          <button class="btn btn-repeat" type="button" aria-label="Lặp lại">
+            <span aria-hidden="true">&#8635;</span>
+          </button>
+          <button class="btn btn-prev" type="button" aria-label="Bài trước">
+            <span aria-hidden="true">&#9198;</span>
+          </button>
+          <button class="btn btn-toggle-play" type="button" aria-label="Phát hoặc tạm dừng">
+            <span class="icon-pause" aria-hidden="true">&#9208;</span>
+            <span class="icon-play" aria-hidden="true">&#9654;</span>
+          </button>
+          <button class="btn btn-next" type="button" aria-label="Bài tiếp theo">
+            <span aria-hidden="true">&#9197;</span>
+          </button>
+          <button class="btn btn-random" type="button" aria-label="Phát ngẫu nhiên">
+            <span aria-hidden="true">&#10542;</span>
+          </button>
+        </div>
+
+        <div class="timeline-card">
+          <input
+            id="progress"
+            class="progress"
+            type="range"
+            value="0"
+            step="1"
+            min="0"
+            max="100"
+            aria-label="Tiến trình phát"
+          >
+          <div class="time">
+            <span class="current-time">0:00</span>
+            <span class="duration">0:00</span>
+          </div>
+        </div>
+
+        <audio id="audio" src="" preload="metadata"></audio>
       </div>
 
-      <!-- Control -->
-      <div class="control">
-        <div class="btn btn-repeat">
-          <i class="fas fa-redo"></i>
+      <section class="playlist-panel" aria-label="Danh sách phát">
+        <div class="playlist-header">
+          <div>
+            <p class="section-kicker">Hàng chờ</p>
+            <h3>Danh sách phát</h3>
+          </div>
+          <span class="playlist-count">6 bài hát</span>
         </div>
-        <div class="btn btn-prev">
-          <i class="fas fa-step-backward"></i>
-        </div>
-        <div class="btn btn-toggle-play">
-          <i class="fas fa-pause icon-pause"></i>
-          <i class="fas fa-play icon-play"></i>
-        </div>
-        <div class="btn btn-next">
-          <i class="fas fa-step-forward"></i>
-        </div>
-        <div class="btn btn-random">
-          <i class="fas fa-random"></i>
-        </div>
-      </div>
 
-      <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-      <div class="time">
-        <span class="current-time">0:00</span>
-        <span class="duration">0:00</span>
-      </div>
+        <div class="playlist"></div>
+      </section>
+    </section>
+  </main>
 
-      <audio id="audio" src=""></audio>
-    </div>
-
-    <!-- Playlist -->
-    <div class="playlist"></div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
