@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/nghe_nhac/",
+      "permanent": false
+    },
+    {
+      "source": "/nghe_nhac",
+      "destination": "/nghe_nhac/",
+      "permanent": false
+    }
+  ]
+}
